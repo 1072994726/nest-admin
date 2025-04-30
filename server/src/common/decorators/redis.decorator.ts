@@ -44,6 +44,7 @@ export function Cacheable(CACHE_NAME: string, CACHE_KEY: string, CACHE_EXPIRESIN
         return await originMethod.apply(this, args);
       }
 
+      console.log(CACHE_NAME, key, 'CACHE_NAME')
       const cacheResult = await this.redis.get(`${CACHE_NAME}${key}`);
 
       if (!cacheResult) {
